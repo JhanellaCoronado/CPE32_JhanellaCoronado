@@ -1,0 +1,29 @@
+---
+# db_servers/tasks/main.yml
+
+- name: install mariadb package (CentOS)
+  dnf:
+    name: mariadb-server
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: start and enable mariadb (CentOS)
+  service:
+    name: mariadb
+    state: restarted
+    enabled: true
+  when: ansible_distribution == "CentOS"
+
+- name: install mariadb package (Ubuntu)
+  apt:
+    name: mariadb-server
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: start and enable mariadb (Ubuntu)
+  service:
+    name: mariadb
+    state: restarted
+    enabled: true
+  when: ansible_distribution == "Ubuntu"
+

@@ -1,0 +1,8 @@
+---
+# file_servers/tasks/main.yml
+
+- name: install samba package
+  package:
+    name: samba
+    state: latest
+
